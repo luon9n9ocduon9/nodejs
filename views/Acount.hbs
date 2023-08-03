@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <div class="Formacount" style="text-align: center;">
+
+
+    <h1>My Account</h1>
+
+    <div style="text-align: center;">
+
+      <p>Information of Acount</p>
+      <p>Gmail: {{data.gmail}}</p>
+      <p>type: {{data.Permission}}</p>
+
+    </div>
+
+
+
+    <div>
+
+      <h3>account in web ({{countadmin}})</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Stt</th>
+            <th scope="col">Gmail</th>
+            <th scope="col">Pasword</th>
+            <th scope="col">Permission</th>
+          </tr>
+        </thead>
+        {{#each accounts}}
+        <tbody>
+
+          <tr>
+            <th scope="row">{{ sum @index 1}}</th>
+            <td>{{this.gmail}}</td>
+            <td>{{this.Password}}</td>
+            <td>{{this.Permission}}</td>
+
+            <td>
+              <button type="button" data-id="{{this._id}}" class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#delete-product">
+                Delete
+              </button>
+              <a href="/{{this._id}}/editacount" class="btn btn-primary">Edit</a>
+              <a href="/{{this._id}}/detailacount" class="btn btn-primary">detail</a>
+
+            </td>
+            
+          </tr>
+
+        </tbody>
+        {{/each}}
+      </table>
+      <nav aria-label="...">
+        <ul class="pagination">
+           <li class="page-item">
+            <a class="page-link" href="http://localhost:3000/Acount?page={{pre}}">pervious</a>
+          </li>
+          {{#each  arrsizepage }}
+          <li class="page-item"><a class="page-link" href="http://localhost:3000/Acount?page={{this}}">{{this}}</a></li>
+          {{/each}}
+          <li class="page-item">
+            <a class="page-link" href="http://localhost:3000/Acount?page={{next}}">Next</a>
+          </li>
+        </ul>
+      </nav>
+
+
+      <script>
+
+        var curentpage = 1;
+        function load(page){
+          curentpage = page
+
+        }
+
+        function  next(){
+          curentpage
+        }
+
+      </script>
+
+
+
+      {{!-- modal delete form --}}
+      <div class="modal" tabindex="-1" id="delete-product">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Notification!</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Remove Acount.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" id="btn-delete-modal" class="btn btn-primary">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+    </div>
+
+
+
+  </div>
+
+
+  {{!-- deleteacount --}}
+
+
+
+
+  <form class="row g-3" method="POST" name="deleteform-modal"></form>
+
+
+
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+      var deleteid;
+      var deleteform = document.forms['deleteform-modal'];
+      var btndelete = document.getElementById('btn-delete-modal');
+      var exampleModal = document.getElementById('delete-product');
+      exampleModal.addEventListener('show.bs.modal', function (event) {
+        var button = event.relatedTarget
+        // Extract info from data-bs-* attributes
+        deleteid = button.getAttribute('data-id');
+        console.log(deleteid);
+
+      });
+
+
+      btndelete.onclick = function () {
+        deleteform.action = '/deleteacount/' + deleteid + '?_method=DELETE';
+        deleteform.submit();
+      }
+
+    });
+  </script>
+
+
+
+
+
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

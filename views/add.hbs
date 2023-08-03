@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.1.1/classic/ckeditor.js"></script>
+
+</head>
+
+
+<body>
+
+<div  style="display: flex; justify-content: center; align-items: center; height: 700px;">
+
+  <form class="row g-3" action="/addsp" method="post" style="border: 1px solid #ccc;
+  padding: 20px;
+  width: 500px;
+ 
+">
+
+
+    <div style="width: 400px; text-align: ;">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" name="name">
+    </div>
+
+
+    <div style="width: 400px;" >
+      <label for="price" class="form-label">Price</label>
+      <input type="number" class="form-control" id="price" name="price">
+    </div>
+
+
+    <div >
+      <label for="description" class="form-label">description</label>
+       <textarea name="description" id="description" cols="30" rows="10"></textarea>
+    </div>
+   
+
+    <div style="width: 400px;">
+      <label for="image" class="form-label">Image</label>
+      <input type="text" class="form-control" id="image" name="image">
+    </div>
+    {{!-- <div style="width: 400px;">
+      <label for="image" class="form-label">Số Lượng</label>
+      <input type="text" class="form-control" id="image" name="image">
+    </div>
+    <div style="width: 400px;">
+      <label for="image" class="form-label">Image</label>
+      <input type="text" class="form-control" id="image" name="image">
+    </div> --}}
+
+
+    <div >
+      <button class="btn btn-primary" type="submit">Save</button>
+    </div>
+  
+  </form>
+</div>
+
+<script>
+
+    ClassicEditor
+        .create( document.querySelector( '#description' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
